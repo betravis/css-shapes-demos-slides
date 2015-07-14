@@ -39,25 +39,25 @@ $lightTan: rgb(228, 223, 217);
 $tan: rgb(192, 181, 169);
 $darkTan: rgb(136, 120, 104);
 
-$mainBackgroundColor: desaturate(rgb(89, 65, 56), 20);
-$mainContentColor: lighten(desaturate(rgb(242, 223, 206), 20), 10);
-$titleBackgroundColor: darken(desaturate(rgb(217, 187, 160), 20), 40);
-$titleContentColor: $mainContentColor; //rgb(89, 65, 56);
-$topicBackgroundColor: $mainContentColor;
-$topicContentColor: $mainBackgroundColor;
+$mainBackgroundColor: rgb(255, 246, 229);
+$mainContentColor: rgb(52, 59, 76);
+$titleBackgroundColor: darken(rgb(33, 133, 197), 20);
+$titleContentColor: $mainBackgroundColor;
+$topicBackgroundColor: $titleBackgroundColor;
+$topicContentColor: $titleContentColor;
 
 // Override theme settings (see ../template/settings.scss)
-$mainFont: 'Adobe Clean', 'Source Sans Pro', sans-serif;
+$mainFont: 'Brandon Text', 'Source Sans Pro', sans-serif;
 $mainColor: $mainContentColor;
-$headingFont: 'AdobeClean-BoldSemiCn', 'Adobe Clean', 'Source Sans Pro', sans-serif;
+$headingFont: 'Brandon Text', 'Source Sans Pro', sans-serif;
 $headingColor: $mainContentColor;
 $headingLetterSpacing: 0;
 $headingTextShadow: none;
 $headingTextTransform: none;
 $backgroundColor: $mainBackgroundColor;
-$linkColor: lighten(desaturate($blue, 10), 20);
-$linkColorHover: lighten( $linkColor, 20% );
-$selectionBackgroundColor: #134674;
+$linkColor: rgb(33, 133, 197);
+$linkColorHover: rgb(126, 206, 253);
+$selectionBackgroundColor: rgb(255, 127, 102);
 
 svg use {
     fill: $mainColor;
@@ -75,7 +75,7 @@ svg use {
     }
     .state-background {
         background-color: $titleBackgroundColor;
-        background-image: url(../../resources/icon-bg-tile.png);
+        xbackground-image: url(../../resources/icon-bg-tile.png);
         background-blend-mode: multiply;
     }
 }
@@ -87,18 +87,9 @@ svg use {
     }
     .state-background {
         background-color: $topicBackgroundColor;
-        background-image: url(../../resources/icon-bg-tile.png);
-        background-blend-mode: multiply;
-        opacity: 0.8;
-    }
-}
-
-.about {
-    .state-background {
-        background-image: url(../../resources/web-engine-team.jpg);
-        background-size: cover;
-        background-position: center center;
-        background-blend-mode: overlay;
+        xbackground-image: url(../../resources/icon-bg-tile.png);
+        xbackground-blend-mode: multiply;
+        xopacity: 0.8;
     }
 }
 
@@ -130,6 +121,10 @@ svg use {
 // Theme template ------------------------------
 @import "theme";
 // ---------------------------------------------
+
+.title .reveal, .topic .reveal {
+    a { color: $titleContentColor; }
+}
 
 /* could insert a media query here to adjust font size / slide-size for larger screens */
 /* @media screen and (min-width: 900px and min-height: 600px ) ... */
