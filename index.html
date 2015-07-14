@@ -1,0 +1,169 @@
+---
+---
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Icons and the Web</title>
+
+        <meta name="description" content="How icons are designed, produced, and delivered for the web">
+        <meta name="author" content="Bear Travis">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/bear.css" id="theme">
+
+        <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.css">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'reveal.js/css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+        <style>
+        .reveal .fa {
+            font-family: FontAwesome;
+            font-style: normal;
+        }
+        .reveal .big {
+            font-size: 1.6em;
+        }
+        .reveal .flex-ribbon {
+            display: flex;
+            align-items: center;
+        }
+        .reveal .flex-ribbon > * {
+            flex: 1;
+        }
+        .ar-2-3 { position: relative; }
+        .ar-2-3:before {
+            display: block;
+            content: '';
+            margin: 0;
+            padding: 150% 0 0 0;
+        }
+        .ar-2-3 > *:first-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        h2 svg, h1 svg {
+            height: 2em;
+            margin-bottom: -.1em;
+        }
+        .reveal h2 img, .reveal h1 img {
+            height: 2em;
+            vertical-align: middle;
+            margin: 0;
+        }
+        @-webkit-keyframes colorSequence {
+            0% { fill: #7ecefd; }
+            33% { fill: #fff6e5; }
+            66% { fill: #ff7f66; }
+            100% { fill: #7ecefd; }
+        }
+        .reveal .color-rotate {
+            -webkit-animation-name: colorSequence;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-duration: 8s;
+        }
+        .animation-target {
+            -webkit-transform-origin: center center;
+        }
+        .small-caps {
+            -webkit-font-feature-settings: "smcp";
+            font-feature-settings: "smcp";
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+<!-- INTRODUCTION -->
+                {% include intro.html %}
+
+<!-- ICON DESIGN -->
+                {% include icon-design.html %}
+
+<!-- SCREEN ICONS -->
+                {% include screen-icons.html %}
+
+<!-- ICON DELIVERY -->
+                {% include icon-delivery.html %}
+
+<!-- RASTER ICONS -->
+                {% include raster-icons.html %}
+
+<!-- ICON FONTS -->
+                {% include font-icons.html %}
+
+<!-- SVG -->
+                {% include svg-icons.html %}
+
+<!-- CONCLUSION -->
+                {% include conclusion.html %}
+
+<!-- svg vs icon fonts http://filamentgroup.com/lab/bulletproof_icon_fonts.html -->
+<!-- browser icons http://marinad.com.ar/free-flat-browser-logotypes/ -->
+            </div>
+
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                // theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: 'linear', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'resources/trianglify-red-blue.svg',
+                // parallaxBackgroundSize: '1800px 1050px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'custom-startup.js' },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+        </script>
+
+    </body>
+</html>

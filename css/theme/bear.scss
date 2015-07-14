@@ -1,0 +1,303 @@
+---
+---
+/**
+ * Theme for Icons and the Web
+ * (c) 2013
+ */
+
+
+// Default mixins and settings -----------------
+@import "mixins";
+@import "settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+
+@mixin vendor-prefix( $property, $value ) {
+    -webkit-#{$property} : $value;
+    -moz-#{$property} : $value;
+    -o-#{$property}: $value;
+    -ms-#{$property}: $value;
+    #{$property}: $value;
+}
+
+// Theme colors
+$red: rgb(255, 0, 0);
+$orange: rgb(251, 176, 52);
+$yellow: rgb(255, 221, 0);
+$green: rgb(193, 216, 47);
+$blue: rgb(0, 164, 228);
+$purple: rgb(131, 72, 181);
+
+$lightGrey: rgb(218, 221, 224);
+$grey: rgb(172, 179, 185);
+$darkGrey: rgb(107, 115, 123);
+
+$lightTan: rgb(228, 223, 217);
+$tan: rgb(192, 181, 169);
+$darkTan: rgb(136, 120, 104);
+
+$mainBackgroundColor: desaturate(rgb(89, 65, 56), 20);
+$mainContentColor: lighten(desaturate(rgb(242, 223, 206), 20), 10);
+$titleBackgroundColor: darken(desaturate(rgb(217, 187, 160), 20), 40);
+$titleContentColor: $mainContentColor; //rgb(89, 65, 56);
+$topicBackgroundColor: $mainContentColor;
+$topicContentColor: $mainBackgroundColor;
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Adobe Clean', 'Source Sans Pro', sans-serif;
+$mainColor: $mainContentColor;
+$headingFont: 'AdobeClean-BoldSemiCn', 'Adobe Clean', 'Source Sans Pro', sans-serif;
+$headingColor: $mainContentColor;
+$headingLetterSpacing: 0;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: $mainBackgroundColor;
+$linkColor: lighten(desaturate($blue, 10), 20);
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+
+svg use {
+    fill: $mainColor;
+}
+
+.reveal .state-background {
+    background-color: $backgroundColor;
+    @include vendor-prefix(transition, background-color 400ms ease);
+}
+
+.title .reveal {
+    color: $titleContentColor;
+    h1, h2, h2, h4, h5, h6 {
+        color: $titleContentColor;
+    }
+    .state-background {
+        background-color: $titleBackgroundColor;
+        background-image: url(../../resources/icon-bg-tile.png);
+        background-blend-mode: multiply;
+    }
+}
+
+.topic .reveal {
+    color: $topicContentColor;
+    h1, h2, h2, h4, h5, h6 {
+        color: $topicContentColor;
+    }
+    .state-background {
+        background-color: $topicBackgroundColor;
+        background-image: url(../../resources/icon-bg-tile.png);
+        background-blend-mode: multiply;
+        opacity: 0.8;
+    }
+}
+
+.about {
+    .state-background {
+        background-image: url(../../resources/web-engine-team.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-blend-mode: overlay;
+    }
+}
+
+.reveal code, .reveal .monospace {
+    font-family: 'Source Code Pro', monospace;
+    white-space: pre;
+}
+
+.reveal pre {
+    font-size: 1em;
+    width: 100%;
+}
+
+.reveal .slides { text-align: left; text-rendering: optimizeLegibility; }
+
+.reveal section { text-align: inherit; }
+
+.reveal section.align-center { text-align: center; }
+
+.reveal figure {
+    text-align: center;
+    * { box-shadow: none; }
+}
+
+.reveal section.align-left { text-align: left; }
+
+.reveal section.align-right { text-align: right; }
+
+// Theme template ------------------------------
+@import "theme";
+// ---------------------------------------------
+
+/* could insert a media query here to adjust font size / slide-size for larger screens */
+/* @media screen and (min-width: 900px and min-height: 600px ) ... */
+
+.reveal .ribbon {
+    > * {
+        vertical-align: middle;
+        height:128px;
+        background: none;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+    }
+    &.small > * {
+        height: 64px;
+    }
+    &.big > * {
+        height: 256px;
+    }
+    &.ascent > * {
+        vertical-align: baseline;
+        &:nth-child(1) {
+            height: 64px;
+        }
+        &:nth-child(2) {
+            height: 128px;
+        }
+        &:nth-child(3) {
+            height: 256px;
+        }
+    }
+}
+
+.reveal img, .reveal svg {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    max-height: 60vh;
+}
+
+/* Color Schemes */
+
+.reveal {
+    h1, h2, h3, h4, h5, h6 { line-height: 1.1em; font-weight: 900; }
+}
+
+.reveal .comment {
+    margin: 1em;
+    > * { display: inline-block; vertical-align: middle; }
+    .icon { font-size: 3em; }
+    .content {
+        margin-left: 1em;
+        margin-right: 3em;
+        position: relative;
+        border-radius: 1em;
+        padding: 1em;
+        min-height: 3em;
+        background-color: darken($mainColor, 30%);
+        color: $backgroundColor;
+    }
+    .content:before {
+        position: absolute;
+        width: 0; height: 0;
+        right: 100%;
+        border: 1em solid transparent;
+        border-left-width: 0;
+        border-right-color: darken($mainColor, 30%);
+        content: ' ';
+    }
+}
+.reveal .comment.right {
+    .content {
+        margin-left: 3em;
+        margin-right: 1em;
+    }
+    .content:before {
+        left: 100%;
+        border-left: 1em solid darken($mainColor, 30%);
+        border-right-width: 0;
+    }
+}
+
+.reveal .comment.bottom {
+    .content {
+        margin: 0;
+        margin-bottom: 1em;
+    }
+    .content:before {
+        top: 100%;
+        left: 50%;
+        margin-left: -1em;
+        border: 1em solid transparent;
+        border-bottom-width: 0;
+        border-top: 1em solid darken($mainColor, 30%);
+    }
+}
+
+.reveal a.no-roll {
+    @include vendor-prefix(perspective, 0);
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+.reveal {
+    .green, .orange, .red { display: inline-block; border-radius: .1em; padding: .1em; }
+}
+.reveal .green {
+    background-color: #718C44;
+}
+
+.reveal .orange {
+    background-color: #e89041;
+}
+
+.reveal .red {
+    background-color: #b2382d;
+}
+
+$support-color: lighten(desaturate(#84b24e, 15), 5);
+$partial-support-color: desaturate(#fccb5f, 25);
+$no-support-color: desaturate(#f0614a, 25);
+
+table.support {
+    display: inline-block;
+    margin: 0 auto;
+    tr {
+        display: flex;
+        align-items: baseline;
+        &:first-child td {
+            padding: .25em;
+        }
+    }
+    td {
+        display: block;
+        max-width: 140px;
+        flex: 1;
+        text-align: center;
+        padding: 0.25em;
+        margin: .2em;
+        border: none;
+        background-clip: padding-box;
+        border-radius: .15em;
+        img {
+            border: none;
+            margin: 0;
+            box-shadow: none;
+            background: none;
+            width: 100%;
+            vertical-align: bottom;
+        }
+        &.highlight {
+            border: .15em solid $mainColor;
+            margin: .05em;
+            border-radius: .25em;
+        }
+    }
+    .support {
+        background-color: $support-color;
+    }
+    .partial-support {
+        background-color: $partial-support-color;
+    }
+    .no-support {
+        background-color: $no-support-color;
+    }
+}
+
+li.custom-marker {
+    list-style-type: none;
+    margin-left: -1em;
+}
